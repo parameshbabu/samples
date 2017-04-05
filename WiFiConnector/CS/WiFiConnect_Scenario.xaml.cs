@@ -70,7 +70,15 @@ namespace WiFiConnect
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await firstAdapter.ScanAsync();
+            try
+            {
+                await firstAdapter.ScanAsync();
+            }
+            catch (Exception err)
+            {
+                rootPage.NotifyUser(String.Format("Error scanning WiFi adapter: 0x{0:X}: {1}", err.HResult, err.Message), NotifyType.ErrorMessage);
+                return;
+            }
             ConnectionBar.Visibility = Visibility.Collapsed;
             DisplayNetworkReport(firstAdapter.NetworkReport);
         }
@@ -99,7 +107,8 @@ namespace WiFiConnect
             ConnectionBar.Visibility = Visibility.Visible;
 
             // Only show the password box if needed
-            if (selectedNetwork.AvailableNetwork.SecuritySettings.NetworkAuthenticationType == NetworkAuthenticationType.Open80211)
+            if (selectedNetwork.AvailableNetwork.SecuritySettings.NetworkAuthenticationType == NetworkAuthenticationType.Open80211 &&
+                    selectedNetwork.AvailableNetwork.SecuritySettings.NetworkEncryptionType == NetworkEncryptionType.None)
             {
                 NetworkKeyInfo.Visibility = Visibility.Collapsed;
             }
@@ -124,7 +133,8 @@ namespace WiFiConnect
             }
 
             WiFiConnectionResult result;
-            if (selectedNetwork.AvailableNetwork.SecuritySettings.NetworkAuthenticationType == Windows.Networking.Connectivity.NetworkAuthenticationType.Open80211)
+            if (selectedNetwork.AvailableNetwork.SecuritySettings.NetworkAuthenticationType == Windows.Networking.Connectivity.NetworkAuthenticationType.Open80211 &&
+                    selectedNetwork.AvailableNetwork.SecuritySettings.NetworkEncryptionType == NetworkEncryptionType.None)
             {
                 result = await firstAdapter.ConnectAsync(selectedNetwork.AvailableNetwork, reconnectionKind);
             }
