@@ -3,9 +3,7 @@
 using System;
 using System.Threading.Tasks;
 using Windows.Foundation;
-#if BUILDWITHCORTANA
 using Windows.Services.Cortana;
-#endif
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
@@ -13,11 +11,23 @@ namespace IoTCoreDefaultApp
 {
     class CortanaHelper
     {
-        public static void LaunchCortanaToConsentPageAsyncIfNeeded()
+        public static Task<bool> LaunchCortanaToConsentPageAsyncIfNeeded()
         {
-#if BUILDWITHCORTANA
+            var isCortanaSupported = false;
+            try
+            {
+                isCortanaSupported = CortanaSettings.IsSupported();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // This is indicitive of EmbeddedMode not being enabled (i.e.
+                // running IotCoreDefaultApp on Desktop or Mobile without 
+                // enabling EmbeddedMode) 
+                //  https://developer.microsoft.com/en-us/windows/iot/docs/embeddedmode
+            }
+
             // Do nothing for devices that do not support Cortana
-            if (CortanaSettings.IsSupported())
+            if (isCortanaSupported)
             {
                 // Ordinarily, this is run during a first use Out-of-box-Experience (OOBE) and voice consent will NOT be granted.
                 // So, we launch Cortana to it's Consent Page as part of OOBE to give the end-user an opportunity to give consent.
@@ -26,10 +36,11 @@ namespace IoTCoreDefaultApp
                 var cortanaSettings = CortanaSettings.GetDefault();
                 if (!cortanaSettings.HasUserConsentToVoiceActivation)
                 {
-                    LaunchCortanaToConsentPageAsync();
+                    return LaunchCortanaToConsentPageAsync();
                 }
             }
-#endif
+
+            return Task.FromResult<bool>(false);
         }
 
         public static Task<bool> LaunchCortanaToConsentPageAsync()

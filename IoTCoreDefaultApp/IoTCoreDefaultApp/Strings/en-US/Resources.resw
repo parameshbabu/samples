@@ -166,6 +166,7 @@
   </data>
   <data name="NetworkConnectingMessageText" xml:space="preserve">
     <value>Checking network requirements</value>
+    <comment>Message display during wifi network connect click</comment>
   </data>
   <data name="NetworkPasswordPromptText" xml:space="preserve">
     <value>Enter the network security key</value>
@@ -207,17 +208,13 @@
     <value>Wi-Fi</value>
     <comment>Label for Wi-Fi list in options page</comment>
   </data>
-  <data name="StartDevelopingText" xml:space="preserve">
-    <value> to start developing</value>
-    <comment>Part of "Visit www.windowsondevices.com to start developing"</comment>
-  </data>
   <data name="VisitText" xml:space="preserve">
-    <value>Visit</value>
-    <comment>Part of "Visit www.windowsondevices.com to start developing"</comment>
+    <value>Start exploring </value>
+    <comment>Part of "Start exploring WindowsOnDevices.com"</comment>
   </data>
   <data name="WindowsOnDevicesUrlText" xml:space="preserve">
-    <value> www.windowsondevices.com</value>
-    <comment>Part of "Visit www.windowsondevices.com to start developing"</comment>
+    <value>WindowsOnDevices.com</value>
+    <comment>Part of "Start exploring WindowsOnDevices.com"</comment>
   </data>
   <data name="KeyboardTitleText" xml:space="preserve">
     <value>Keyboard layout</value>
@@ -635,11 +632,11 @@
     <comment>Format string for message displayed when Inbound pairing handler registration already done</comment>
   </data>
   <data name="BluetoothInboundRegistrationFailed" xml:space="preserve">
-    <value>Failed to register for inbound pairing</value>
+    <value>Failed to register for inbound pairing.</value>
     <comment>Message displayed when Inbound pairing handler registration fails</comment>
   </data>
   <data name="BluetoothInboundRegistrationSucceededFormat" xml:space="preserve">
-    <value>Successfully registered for inbound pairing, supported ceremonies: {0}</value>
+    <value>Successfully registered for inbound pairing, supported ceremonies: {0} . </value>
     <comment>Format string for message displayed when Inbound pairing handler registration succeeds</comment>
   </data>
   <data name="BluetoothPairingFailureFormat" xml:space="preserve">
@@ -650,13 +647,13 @@
     <value>Successfuly paired with {0} ({1})</value>
     <comment>Format string for message displayed when pairing attempt succeeds</comment>
   </data>
-  <data name="BluetoothStartedWatching" xml:space="preserve">
+  <data name="BluetoothOn" xml:space="preserve">
     <value>Your device is searching for and can be discovered by other Bluetooth devices</value>
-    <comment>Message display when "Start Watcher" button is pressed</comment>
+    <comment>Message display when "Start Bluetooth" button is pressed</comment>
   </data>
-  <data name="BluetoothStoppedWatching" xml:space="preserve">
-    <value>Stopped watching for Bluetooth devices</value>
-    <comment>Message display when "Stop Watcher" button is pressed</comment>
+  <data name="BluetoothOff" xml:space="preserve">
+    <value>Bluetooth is turned off</value>
+    <comment>Message display when "Stop Bluetooth" button is pressed</comment>
   </data>
   <data name="BluetoothUnpairingFailureFormat" xml:space="preserve">
     <value>Unpairing result was {0}: Failed to unpair from {1} ({2})</value>
@@ -792,5 +789,33 @@ Alternatively, click or tap the button below to enter your Administrator account
   <data name="ToggleOffText" xml:space="preserve">
     <value>Off</value>
     <comment>Text used in toggle switches for 'off' state.</comment>
+  </data>
+  <data name="WebBrowserText" xml:space="preserve">
+    <value>Browser</value>
+    <comment>Title for WebBrowser Text</comment>
+  </data>
+  <data name="WebAddressPlaceholderText" xml:space="preserve">
+    <value>Search or enter web address</value>
+    <comment>WebAddress Placeholder</comment>
+  </data>
+  <data name="MicrosoftWifiConnect" xml:space="preserve">
+    <value>http://www.msftconnecttest.com/redirect</value>
+    <comment>Used by Wifi Connect Redirect</comment>
+  </data>
+  <data name="NetworkNotConnected" xml:space="preserve">
+    <value>No connections found.</value>
+    <comment>Part1 of NetworkNotConnected. Check to see if Device is connected to network</comment>
+  </data>
+  <data name="WebAddressRequired" xml:space="preserve">
+    <value>Need to enter a web address or text to search.</value>
+    <comment>Browser Text Required</comment>
+  </data>
+  <data name="NetworkNotConnected2" xml:space="preserve">
+    <value>Check your device network in settings.</value>
+    <comment>Part2 of NetworkNotConnected</comment>
+  </data>
+  <data name="Windows10IoTCoreText" xml:space="preserve">
+    <value>Windows 10 IoT Core</value>
+    <comment>Dont Localize</comment>
   </data>
 </root>
